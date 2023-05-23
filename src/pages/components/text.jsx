@@ -1,5 +1,6 @@
 import React ,{useState}from "react";
 import  message  from "../message/index";
+import { Text } from "@tarojs/components";
 export default function MyText(props) {
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -9,8 +10,8 @@ export default function MyText(props) {
   })
   
   return (
-    !loggedIn && <span style={{ ...props.style, fontSize: props.props?.size || "18px" }}>
+    !loggedIn && <text style={{ ...props.style, fontSize: props.props?.size || "18px" }}>
       {props.props.text}
-    </span>
+    </text>
   );
 }

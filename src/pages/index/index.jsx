@@ -62,6 +62,7 @@ export default function Index(props) {
               model={model}
               props={componentProps}
             ></Component>
+            // <View>123</View>
           );
         })}
       </Suspense>

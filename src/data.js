@@ -1,1 +1,24 @@
-export default {"block":[{"key":"input","top":79,"left":277,"focus":false,"model":{"default":"username"},"props":{},"width":168,"height":32,"zIndex":1,"alignCenter":false},{"key":"input","top":182,"left":277,"focus":false,"model":{"default":"password"},"props":{},"width":168,"height":32,"zIndex":1,"alignCenter":false},{"key":"text","top":83.5,"left":158,"focus":false,"model":{},"props":{"size":"20px","text":"用户名","color":"#BEB8B8"},"width":60,"height":28,"zIndex":1,"alignCenter":false},{"key":"text","top":182,"left":158,"focus":false,"model":{},"props":{"size":"20px","text":"密码","color":"#BEB8B8"},"width":40,"height":28,"zIndex":1,"alignCenter":false},{"key":"button","top":287,"left":231,"focus":true,"model":{},"props":{"url":"http://localhost:8080/login","data":"userLogin","size":"medium","text":"登陆按钮","type":"primary","onClick":"handleLogin"},"width":88,"height":32,"zIndex":1,"alignCenter":false}],"container":{"width":550,"height":550}}
+export default {
+  "container": {
+    "width": 550,
+    "height": 550
+  },
+  "block": [
+    {
+      "top": 285,
+      "left": 250,
+      "zIndex": 1,
+      "key": "button",
+      "alignCenter": false,
+      "props": {
+        "text": "123",
+        "type": "primary",
+        "size": "20px"
+      },
+      "model": {},
+      "width": 88,
+      "height": 32,
+      "focus": true
+    }
+  ]
+}

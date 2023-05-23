@@ -3,7 +3,7 @@
   "projectname": "myApp",
   "appid": "testAppId",
   "setting": {
-    "es6": false,
+    "es6": true,
     "minified": false
   }
 }

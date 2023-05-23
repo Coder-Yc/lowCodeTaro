@@ -5,11 +5,11 @@
   "appid": "wxa96260fe324d8977",
   "setting": {
     "urlCheck": false,
-    "es6": false,
-    "enhance": false,
-    "postcss": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
     "preloadBackgroundData": false,
-    "minified": false,
+    "minified": true,
     "newFeature": false,
     "coverView": true,
     "nodeModules": false,
@@ -37,7 +37,7 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "condition": false
+    "condition": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.13.2",
@@ -50,5 +50,6 @@
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "simulatorPluginLibVersion": {}
 }

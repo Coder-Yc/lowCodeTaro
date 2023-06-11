@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import message from "../message/index";
-import axios from 'axios'
+import axios from 'axios';
 import { Button } from "@tarojs/components";
+import Taro from '@tarojs/taro';
 export default function MyButton(props) {
   // 在这里编写 Button 组件的渲染逻辑
   const [username, setUsernameValue] = useState('ycyc');
@@ -9,21 +10,29 @@ export default function MyButton(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userinfo, setUserInfo] = useState('');
 
-
   const handleLogin = () => {
-    console.log('111111--', username, password);
-    const { url } = props.props
-    axios
-      .post(url, { username, password })
-      .then((res) => {
-        if (res.status == '200') {
+    Taro.request({
+      url: props.props.url,
+      method: 'POST', // This value for demonstration purposes only is not a real API URL.
+      data: {
+        username: username,
+        password: password
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == '200') {
+
           console.log(res.data);
           setUserInfo(res.data)
           setLoggedIn(true);
-          message.publish('loggedIn', {a: true}  )
+          message.publish('loggedIn', { a: true })
         }
-      })
-      
+      }
+    })
+
+  }
+  const handleConsole = () => {
+    console.log('按钮事件触发');
   }
   message.subscribe('userinfo', (data) => {
     let { mode, inputValue } = data
@@ -47,7 +56,7 @@ export default function MyButton(props) {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
-  
+
     // 格式化日期和时间
     const formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     return formattedTime
@@ -60,17 +69,19 @@ export default function MyButton(props) {
     case 'handleRegister':
       handle = handleRegister
       break;
+    case 'handleConsole':
+      handle = handleConsole
+      break;
     default:
       handle = null;
   }
-  let {type, size, text} = props.props 
-  if(type === 'success') {
+  let { type, size, text } = props.props
+  if (type === 'success') {
     type = 'primary'
   }
 
-  console.log(type, size);
   return (
-    <div>
+    <view>
       {
         !loggedIn && (
           <Button
@@ -93,16 +104,16 @@ export default function MyButton(props) {
       }
       {
         loggedIn && (
-          <div style={{marginLeft: '60px',position: "absolute", zIndex: '1000'}}>
-            <div>Welcome! You are logged in.</div>
-            <div >
-             <div> username: {userinfo.username}</div>
-             <div> email: {userinfo.email}</div>
-              <div>created Time: {formatTime(userinfo.created_at)}</div>
-            </div>
-          </div>
+          <view style={{ marginLeft: '60px', position: "absolute", zIndex: '1000' }}>
+            <view>Welcome! You are logged in.</view>
+            <view >
+              <view> username: {userinfo.username}</view>
+              <view> email: {userinfo.email}</view>
+              <view>created Time: {formatTime(userinfo.created_at)}</view>
+            </view>
+          </view>
         )
       }
-    </div>
+    </view>
   );
 }
